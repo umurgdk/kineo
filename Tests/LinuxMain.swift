@@ -13,7 +13,6 @@ XCTMain([
 	testCase(SerializationPerformanceTest.allTests),
 	testCase(TestStore_SimpleQueryEvaluationTest.allTests),
 	testCase(TestStore_QueryPlanEvaluationTest.allTests),
-	testCase(DiomedeStore_QueryPlanEvaluationTest.allTests),
 	testCase(SPARQLContentNegotiatorTest.allTests),
 	testCase(MemoryStore_SPARQLEvaluationTest.allTests),
 	testCase(MemoryStore_SPARQLEvaluationTest.allTests),

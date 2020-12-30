@@ -9,8 +9,6 @@
 import Foundation
 import SPARQLSyntax
 import Kineo
-import Diomede
-import DiomedeQuadStore
 
 /// Parse the supplied RDF files and load the resulting RDF triples into the database's
 /// QuadStore in the supplied named graph (or into a graph named with the corresponding
@@ -292,21 +290,7 @@ private func humanReadable(count: Int) -> String {
 func quadStore(_ config: QuadStoreConfiguration, verbose: Bool) throws -> AnyMutableQuadStore {
 //    print("Using AnyQuadStore")
     let mqs = try config.anymutablestore()
-    
-    if verbose {
-        if let d = mqs._store as? DiomedeQuadStore {
-            d.progressHandler = { (status) in
-                switch status {
-                case let .loadProgress(count: i, rate: tps):
-                    let s = String(format: "\(humanReadable(count: i)) triples (%.1f t/s)", tps)
-                    print("\(s)")
-                @unknown default:
-                    break
-                }
-            }
-        }
-    }
-    
+        
     if case let .loadFiles(defaultFiles, namedFiles) = config.initialize {
         let graph = Term(iri: "tag:kasei.us,2018:default-graph")
         _ = try parse(into: mqs, files: defaultFiles, version: startSecond, graph: graph, verbose: verbose)
@@ -399,8 +383,6 @@ func usage(_ pname: String) {
 
         """)
 }
-
-DiomedeConfiguration.default.mapSize = 24_567_000_000
 
 var verbose = false
 let config = try QuadStoreConfiguration(arguments: &CommandLine.arguments)

@@ -8,7 +8,6 @@
 
 import Foundation
 import SPARQLSyntax
-import DiomedeQuadStore
 import Kineo
 
 @discardableResult
@@ -88,7 +87,6 @@ guard argscount >= 2 else {
 
 enum TestStore {
     case memory
-    case diomede
 }
 
 var evaluationEngines = (simple: true, plan: true)
@@ -99,9 +97,6 @@ while true {
         if next == "-v" {
             _ = args.next()
             verbose = true
-        } else if next == "-d" {
-            _ = args.next()
-            testStore = .diomede
         } else if next == "-m" {
             _ = args.next()
             testStore = .memory
@@ -129,21 +124,4 @@ guard let path = args.next() else { fatalError("Missing path") }
 switch testStore {
 case .memory:
     try run(config: "Memory", path: path, testType: testType, engines: evaluationEngines, verbose: verbose) { return MemoryQuadStore() }
-case .diomede:
-    var files = [URL]()
-    let f = FileManager.default
-    try run(config: "Diomede", path: path, testType: testType, engines: evaluationEngines, verbose: verbose) { () -> DiomedeQuadStore in
-        let dir = f.temporaryDirectory
-        let filename = "kineo-test-\(UUID().uuidString).db"
-        let path = dir.appendingPathComponent(filename)
-        files.append(path)
-        guard let store = DiomedeQuadStore(path: path.path, create: true) else { fatalError() }
-        return store
-    }
-    
-    #if os(macOS)
-    for filename in files {
-        try? f.trashItem(at: filename, resultingItemURL: nil)
-    }
-    #endif
 }

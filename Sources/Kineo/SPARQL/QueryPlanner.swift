@@ -7,7 +7,6 @@
 
 import Foundation
 import SPARQLSyntax
-import DiomedeQuadStore
 
 public enum QueryPlannerError: Error {
     case noPlanAvailable
@@ -1094,13 +1093,6 @@ public struct QueryPlanEvaluator<Q: QuadStoreProtocol>: QueryEvaluatorProtocol {
         if self.verbose {
             print("Query Plan:")
             print(plan.serialize(depth: 0))
-            
-//            if let store = planner.store as? DiomedeQuadStore {
-//                print("Store Terms:")
-//                try store.iterateTerms { (id, term) in
-//                    print("[\(id)] \(term)")
-//                }
-//            }
         }
 
         let seq = AnySequence { () -> AnyIterator<SPARQLResultSolution<Term>> in

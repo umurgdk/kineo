@@ -1,51 +1,9 @@
 import XCTest
 import Foundation
 import SPARQLSyntax
-import DiomedeQuadStore
 @testable import Kineo
 
 #if os(Linux)
-extension DiomedeStore_SPARQLEvaluationTest {
-    static var allTests : [(String, (MemoryStore_SPARQLEvaluationTest) -> () throws -> Void)] {
-        return [
-            ("test10Evaluation_basic", MemoryStore_SPARQLEvaluationTest.test10Evaluation_basic),
-            ("test10Evaluation_triple_match", MemoryStore_SPARQLEvaluationTest.test10Evaluation_triple_match),
-            ("test10Evaluation_open_world", MemoryStore_SPARQLEvaluationTest.test10Evaluation_open_world),
-            ("test10Evaluation_algebra", MemoryStore_SPARQLEvaluationTest.test10Evaluation_algebra),
-            ("test10Evaluation_bnode_coreference", MemoryStore_SPARQLEvaluationTest.test10Evaluation_bnode_coreference),
-            ("test10Evaluation_optional", MemoryStore_SPARQLEvaluationTest.test10Evaluation_optional),
-            ("test10Evaluation_graph", MemoryStore_SPARQLEvaluationTest.test10Evaluation_graph),
-            ("test10Evaluation_dataset", MemoryStore_SPARQLEvaluationTest.test10Evaluation_dataset),
-            ("test10Evaluation_type_promotion", MemoryStore_SPARQLEvaluationTest.test10Evaluation_type_promotion),
-            ("test10Evaluation_cast", MemoryStore_SPARQLEvaluationTest.test10Evaluation_cast),
-            ("test10Evaluation_boolean_effective_value", MemoryStore_SPARQLEvaluationTest.test10Evaluation_boolean_effective_value),
-            ("test10Evaluation_bound", MemoryStore_SPARQLEvaluationTest.test10Evaluation_bound),
-            ("test10Evaluation_expr_builtin", MemoryStore_SPARQLEvaluationTest.test10Evaluation_expr_builtin),
-            ("test10Evaluation_expr_ops", MemoryStore_SPARQLEvaluationTest.test10Evaluation_expr_ops),
-            ("test10Evaluation_expr_equals", MemoryStore_SPARQLEvaluationTest.test10Evaluation_expr_equals),
-            ("test10Evaluation_regex", MemoryStore_SPARQLEvaluationTest.test10Evaluation_regex),
-            ("test10Evaluation_i18n", MemoryStore_SPARQLEvaluationTest.test10Evaluation_i18n),
-            ("test10Evaluation_construct", MemoryStore_SPARQLEvaluationTest.test10Evaluation_construct),
-            ("test10Evaluation_ask", MemoryStore_SPARQLEvaluationTest.test10Evaluation_ask),
-            ("test10Evaluation_distinct", MemoryStore_SPARQLEvaluationTest.test10Evaluation_distinct),
-            ("test10Evaluation_sort", MemoryStore_SPARQLEvaluationTest.test10Evaluation_sort),
-            ("test10Evaluation_solution_seq", MemoryStore_SPARQLEvaluationTest.test10Evaluation_solution_seq),
-            ("test10Evaluation_reduced", MemoryStore_SPARQLEvaluationTest.test10Evaluation_reduced),
-            ("test11Evaluation_aggregates", MemoryStore_SPARQLEvaluationTest.test11Evaluation_aggregates),
-            ("test11Evaluation_bind", MemoryStore_SPARQLEvaluationTest.test11Evaluation_bind),
-            ("test11Evaluation_bindings", MemoryStore_SPARQLEvaluationTest.test11Evaluation_bindings),
-            ("test11Evaluation_construct", MemoryStore_SPARQLEvaluationTest.test11Evaluation_construct),
-            ("test11Evaluation_exists", MemoryStore_SPARQLEvaluationTest.test11Evaluation_exists),
-            ("test11Evaluation_functions", MemoryStore_SPARQLEvaluationTest.test11Evaluation_functions),
-            ("test11Evaluation_grouping", MemoryStore_SPARQLEvaluationTest.test11Evaluation_grouping),
-            ("test11Evaluation_negation", MemoryStore_SPARQLEvaluationTest.test11Evaluation_negation),
-            ("test11Evaluation_project_expression", MemoryStore_SPARQLEvaluationTest.test11Evaluation_project_expression),
-            ("test11Evaluation_property_path", MemoryStore_SPARQLEvaluationTest.test11Evaluation_property_path),
-            ("test11Evaluation_subquery", MemoryStore_SPARQLEvaluationTest.test11Evaluation_subquery),
-            ("test11Evaluation_syntax_query", MemoryStore_SPARQLEvaluationTest.test11Evaluation_syntax_query),
-        ]
-    }
-}
 
 extension MemoryStore_SPARQLEvaluationTest {
     static var allTests : [(String, (MemoryStore_SPARQLEvaluationTest) -> () throws -> Void)] {
@@ -392,82 +350,6 @@ class MemoryStore_SPARQLEvaluationTest: XCTestCase, SPARQLEvaluationTestImpl {
     }
    
     func test10Evaluation_algebra() throws { return try _test10Evaluation_algebra() }
-    func test10Evaluation_ask() throws { return try _test10Evaluation_ask() }
-    func test10Evaluation_basic() throws { return try _test10Evaluation_basic() }
-    func test10Evaluation_bnode_coreference() throws { return try _test10Evaluation_bnode_coreference() }
-    func test10Evaluation_boolean_effective_value() throws { return try _test10Evaluation_boolean_effective_value() }
-    func test10Evaluation_bound() throws { return try _test10Evaluation_bound() }
-    func test10Evaluation_cast() throws { return try _test10Evaluation_cast() }
-    func test11Evaluation_cast() throws { return try _test11Evaluation_cast() }
-    func test10Evaluation_construct() throws { return try _test10Evaluation_construct() }
-    func test10Evaluation_dataset() throws { return try _test10Evaluation_dataset() }
-    func test10Evaluation_distinct() throws { return try _test10Evaluation_distinct() }
-    func test10Evaluation_expr_builtin() throws { return try _test10Evaluation_expr_builtin() }
-    func test10Evaluation_expr_equals() throws { return try _test10Evaluation_expr_equals() }
-    func test10Evaluation_expr_ops() throws { return try _test10Evaluation_expr_ops() }
-    func test10Evaluation_graph() throws { return try _test10Evaluation_graph() }
-    func test10Evaluation_i18n() throws { return try _test10Evaluation_i18n() }
-    func test10Evaluation_open_world() throws { return try _test10Evaluation_open_world() }
-    func test10Evaluation_optional() throws { return try _test10Evaluation_optional() }
-    func test10Evaluation_reduced() throws { return try _test10Evaluation_reduced() }
-    func test10Evaluation_regex() throws { return try _test10Evaluation_regex() }
-    func test10Evaluation_solution_seq() throws { return try _test10Evaluation_solution_seq() }
-    func test10Evaluation_sort() throws { return try _test10Evaluation_sort() }
-    func test10Evaluation_triple_match() throws { return try _test10Evaluation_triple_match() }
-    func test10Evaluation_type_promotion() throws { return try _test10Evaluation_type_promotion() }
-    func test11Evaluation_aggregates() throws { return try _test11Evaluation_aggregates() }
-    func test11Evaluation_bind() throws { return try _test11Evaluation_bind() }
-    func test11Evaluation_bindings() throws { return try _test11Evaluation_bindings() }
-    func test11Evaluation_construct() throws { return try _test11Evaluation_construct() }
-    func test11Evaluation_exists() throws { return try _test11Evaluation_exists() }
-    func test11Evaluation_functions() throws { return try _test11Evaluation_functions() }
-    func test11Evaluation_grouping() throws { return try _test11Evaluation_grouping() }
-    func test11Evaluation_negation() throws { return try _test11Evaluation_negation() }
-    func test11Evaluation_project_expression() throws { return try _test11Evaluation_project_expression() }
-    func test11Evaluation_property_path() throws { return try _test11Evaluation_property_path() }
-    func test11Evaluation_subquery() throws { return try _test11Evaluation_subquery() }
-    func test11Evaluation_syntax_query() throws { return try _test11Evaluation_syntax_query() }
-}
-
-// swiftlint:disable type_body_length
-class DiomedeStore_SPARQLEvaluationTest: XCTestCase, SPARQLEvaluationTestImpl {
-    typealias M = DiomedeQuadStore
-    var sparqlBase: URL!
-    var filename: URL!
-    var testRunner: SPARQLTestRunner<M>!
-    override func setUp() {
-        super.setUp()
-        if let rdfTestsBase = ProcessInfo.processInfo.environment["KINEO_W3C_TEST_PATH"] {
-            let base = NSURL(fileURLWithPath: rdfTestsBase)
-            sparqlBase = base.appendingPathComponent("sparql11")
-        } else {
-            sparqlBase = nil
-        }
-        testRunner = SPARQLTestRunner {
-            let f = FileManager.default
-            let dir = f.temporaryDirectory
-            let filename = "kineo-test-\(UUID().uuidString).db"
-            let path = dir.appendingPathComponent(filename)
-            self.filename = path
-            guard let store = DiomedeQuadStore(path: self.filename.path, create: true) else {
-                fatalError()
-            }
-            return store
-        }
-    }
-    
-    override func tearDown() {
-        super.tearDown()
-        #if os(macOS)
-        let f = FileManager.default
-        try? f.trashItem(at: self.filename, resultingItemURL: nil)
-        #endif
-    }
-   
-    func test10Evaluation_algebra() throws {
-        return try _test10Evaluation_algebra()
-        
-    }
     func test10Evaluation_ask() throws { return try _test10Evaluation_ask() }
     func test10Evaluation_basic() throws { return try _test10Evaluation_basic() }
     func test10Evaluation_bnode_coreference() throws { return try _test10Evaluation_bnode_coreference() }
