@@ -5,13 +5,7 @@ let package = Package(
     name: "Kineo",
     platforms: [.macOS(.v10_15)],
 	products: [
-		.library(name: "Kineo", targets: ["Kineo"]),
-        .executable(
-        	name: "kineo",
-        	targets: ["kineo-cli"]),
-        .executable(
-        	name: "kineo-parse",
-        	targets: ["kineo-parse"]),
+		.library(name: "Kineo", targets: ["Kineo"])
 	],    
     dependencies: [
 		.package(name: "SPARQLSyntax", url: "https://github.com/kasei/swift-sparql-syntax.git", .upToNextMinor(from: "0.1.1")),
@@ -32,19 +26,7 @@ let package = Package(
 			]
     	),
         .target(
-            name: "kineo-cli",
-            dependencies: ["Kineo", "SPARQLSyntax"]
-        ),
-        .target(
-            name: "kineo-client",
-            dependencies: ["Kineo", "SPARQLSyntax"]
-        ),
-        .target(
             name: "kineo-dawg-test",
-            dependencies: ["Kineo", "SPARQLSyntax"]
-        ),
-        .target(
-            name: "kineo-parse",
             dependencies: ["Kineo", "SPARQLSyntax"]
         ),
         .target(
